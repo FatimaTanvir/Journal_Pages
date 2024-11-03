@@ -41,7 +41,7 @@ export function Navigation () {
     } else {
       resetWidth()
     }
-  },[isMobile])
+  },[isMobile, resetWidth]);
 
   useEffect(() => {
     if (isMobile) {

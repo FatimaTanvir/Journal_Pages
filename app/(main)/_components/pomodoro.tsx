@@ -66,7 +66,7 @@ export const PomodoroTimer = () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isDragging]);
+  }, [isDragging, handleMouseMove]);
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
