@@ -1,23 +1,18 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import './globals.css'
+import { Toaster } from "sonner";
+import { Inter } from 'next/font/google'
+import type { Metadata } from 'next'
+
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
+import { ModalProvider } from "@/components/providers/modal-provider";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Daily Pages',
-  description: 'Effortless journaling, perfectly organized—anytime, anywhere.',
+  title: "Journal Pages",
+  description: "Unwind, Reflect, Grow. One Page at a Time.",
   icons: {
     icon: [
       {
@@ -27,34 +22,31 @@ export const metadata: Metadata = {
       },
       {
         media: "(prefers-color-scheme: dark)",
-        url: "/dark-logo.png",
-        href: "/dark-logo.png",
-      }
-    ]
-  }
-}
+        url: "/logo.png",
+        href: "/logo.png",
+      },
+    ],
+  },
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <ConvexClientProvider>
-            <ThemeProvider
-              attribute = "class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-              storageKey="daily-pages-theme"
-              >
-            { children }
-            </ThemeProvider>
-          </ConvexClientProvider>
+      <body className={inter.className}>
+        <ConvexClientProvider>
+          <EdgeStoreProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="jotion-clone-2">
+            <Toaster position="bottom-center" />
+            <ModalProvider/>
+            {children}
+          </ThemeProvider>
+          </EdgeStoreProvider>
+        </ConvexClientProvider>
       </body>
     </html>
-  );
+  )
 }

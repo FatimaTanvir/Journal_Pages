@@ -2,25 +2,26 @@ import Image from "next/image";
 
 export const Heroes = () => {
   return (
-    <div className="flex flex-col items-center justify-center max-w-5xl" >
-        <div className="flec items-center">
-            <div className="relative w-[300px] sm:w-[350px] sm:-[350px] md:h-[400px] mdw-[400px]">
-                <Image
-                src = "/documents.png"
-                fill
-                className="object-contain dark:hidden"
-                alt="Documents"
-                />
-                <Image
-                src = "/documents-dark.png"
-                fill
-                className="object-contain hidden dark:block"
-                alt="Documents"
-                />
-            </div>
+    <div className="flex max-w-4xl flex-col items-center justify-center">
+      <div className="flex items-center">
+      <div className="relative h-[25rem] w-[25rem] sm:w-[30rem] md:w-[25rem]">
+          <Image
+            src="/landing.gif"
+            fill
+            unoptimized
+            className="object-contain dark:hidden"
+            alt="Documents"
+          />
+          <Image
+            src="/landing-dark.gif"
+            fill
+            unoptimized
+            className="hidden object-contain dark:block"
+            alt="Documents"
+          />
         </div>
-    Heroes</div>
-
-  )
+      </div>
+    </div>
+  );
 };
 
