@@ -1,6 +1,6 @@
 import {create} from 'zustand'
 
-type ConverImageStore = {
+type CoverImageStore = {
   url?:string
   isOpen:boolean
   onOpen:() => void
@@ -8,7 +8,7 @@ type ConverImageStore = {
   onReplace:(url:string) => void
 }
 
-export const useCoverImage = create<ConverImageStore>()((set) => ({
+export const useCoverImage = create<CoverImageStore>()((set) => ({
   url:undefined,
   isOpen:false,
   onOpen:() => set({isOpen:true,url:undefined}),

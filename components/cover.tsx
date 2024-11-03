@@ -7,7 +7,7 @@ import { useMutation } from "convex/react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { useConverImage } from "@/hooks/use-cover-image"
+import { useCoverImage } from "@/hooks/use-cover-image"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
 import { useEdgeStore } from "@/lib/edgestore"
@@ -22,7 +22,7 @@ export function Cover ({url,preview}:CoverProps) {
 
   const {edgestore} = useEdgeStore()
   const params = useParams()
-  const coverIamge = useConverImage()
+  const coverIamge = useCoverImage()
   const removeCoverImage = useMutation(api.documents.removeCoverImage)
 
   const onRemove = async () => {
