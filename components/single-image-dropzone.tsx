@@ -1,12 +1,11 @@
 'use client';
 
-import { formatFileSize } from '@edgestore/react/utils';
 import { UploadCloudIcon, X } from 'lucide-react';
-import { Image } from 'lucide-react';
 import * as React from 'react';
-import { Spinner } from './spinner';
 import { useDropzone, type DropzoneOptions } from 'react-dropzone';
 import { twMerge } from 'tailwind-merge';
+
+import { Spinner } from './spinner';
 
 const variants = {
   base: 'relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[200px] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out',
@@ -20,8 +19,8 @@ const variants = {
 };
 
 type InputProps = {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   className?: string;
   value?: File | string;
   onChange?: (file?: File) => void | Promise<void>;
@@ -51,7 +50,7 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const imageUrl = React.useMemo(() => {
       if (typeof value === 'string') {
-        // in case an url is passed in, use it to display the image
+        // in case a url is passed in, use it to display the image
         return value;
       } else if (value) {
         // in case a file is passed in, create a base64 url to display the image
@@ -125,8 +124,8 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="relative">
         {disabled && (
-          <div className="flex item-center justify-center absolute inset-y-0 h-full w-full bg-background/80 z-50"> 
-            <Spinner/>
+          <div className="flex items-center justify-center absolute inset-y-0 h-full w-full bg-background/80 z-50">
+            <Spinner size="lg" />
           </div>
         )}
         <div
@@ -143,7 +142,7 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
 
           {imageUrl ? (
             // Image Preview
-            <Image
+            <img
               className="h-full w-full rounded-md object-cover"
               src={imageUrl}
               alt={acceptedFiles[0]?.name}
@@ -152,7 +151,9 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
             // Upload Icon
             <div className="flex flex-col items-center justify-center text-xs text-gray-400">
               <UploadCloudIcon className="mb-2 h-7 w-7" />
-              <div className="text-gray-400">Click or drag file to upload</div>
+              <div className="text-gray-400">
+                Click or drag file to this area to upload
+              </div>
             </div>
           )}
 
@@ -205,5 +206,20 @@ const Button = React.forwardRef<
   );
 });
 Button.displayName = 'Button';
+
+function formatFileSize(bytes?: number) {
+  if (!bytes) {
+    return '0 Bytes';
+  }
+  bytes = Number(bytes);
+  if (bytes === 0) {
+    return '0 Bytes';
+  }
+  const k = 1024;
+  const dm = 2;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+}
 
 export { SingleImageDropzone };
