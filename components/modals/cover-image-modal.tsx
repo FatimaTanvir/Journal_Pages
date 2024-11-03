@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useConverImage } from "@/hooks/use-cover-image";
+import { useCoverImage } from "@/hooks/use-cover-image";
 import { SingleImageDropzone } from "@/components/single-image-dropzone";
 import { useState } from "react";
 import { useEdgeStore } from "@/lib/edgestore";
@@ -62,6 +62,8 @@ export const CoverImageModal = () => {
           <h2 className="text-center text-lg font-semibold">Cover Image</h2>
         </DialogHeader>
         <SingleImageDropzone
+          width="100%"
+          height="200px"
           className="w-full outline-none"
           disabled={isSubmitting}
           value={file}
