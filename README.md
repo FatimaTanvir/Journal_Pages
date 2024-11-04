@@ -15,7 +15,7 @@ A productivity-focused web app designed to help users manage daily tasks, journa
 First, Clone repository:
 
 ```bash 
-git clone https://github.com/yourusername/journal-pages.git
+gh repo clone FatimaTanvir/Journal_Pages
 ```
 Next, ```cd ..``` into cloned repository and run the following command in your terminal or command prompt, or anything you use:
 
