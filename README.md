@@ -15,7 +15,7 @@ A productivity-focused web app designed to help users manage daily tasks, journa
 1. Clone repository:
 
 ```bash 
-gh repo clone FatimaTanvir/Journal_Pages
+git clone https://github.com/FatimaTanvir/Journal_Pages
 ```
 2. ```cd ``` into cloned repository
 
