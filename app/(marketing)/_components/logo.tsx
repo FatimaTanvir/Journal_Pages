@@ -25,9 +25,9 @@ export const Logo = () => {
         alt="Logo"
         className="hidden dark:block"
       />
-      <p className={cn("font-semibold", font.className)}>
-        Journal Pages
-      </p>
+      <p className={cn("font-semibold", "whitespace-nowrap", font.className)}>
+  Journal Pages
+</p>
     </div>
   )
 }
