@@ -12,17 +12,37 @@ A productivity-focused web app designed to help users manage daily tasks, journa
 
 ## Try it out
 
-First, Clone repository:
+1. Clone repository:
 
 ```bash 
 gh repo clone FatimaTanvir/Journal_Pages
 ```
-Next, ```cd ..``` into cloned repository and run the following command in your terminal or command prompt, or anything you use:
+2. ```cd ``` into cloned repository
 
+3. Install the dependencies:
+```bash
+npm install
+```
+4. Set up the environment variables:
+# Deployment used by `npx convex dev`
+
+CONVEX_DEPLOYMENT=
+NEXT_PUBLIC_CONVEX_URL=
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+
+EDGE_STORE_ACCESS_KEY=
+EDGE_STORE_SECRET_KEY=
+
+5. Run Convex:
+npx convex dev
+
+6. Run the development server: open http://localhost:300# to see a demo in your browser:
+   
 ```bash
 npm run dev
 ```
-Lastly, open http://localhost:300# to see a demo in your browser.
 
 ## Note 
 This project is incomplete, and I will be back to work on it.
