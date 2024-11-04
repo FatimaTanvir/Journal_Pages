@@ -24,8 +24,8 @@ gh repo clone FatimaTanvir/Journal_Pages
 npm install
 ```
 4. Set up the environment variables:
-# Deployment used by `npx convex dev`
-
+# Deployment used by `npx convex dev
+```bash
 CONVEX_DEPLOYMENT=
 NEXT_PUBLIC_CONVEX_URL=
 
@@ -34,7 +34,7 @@ CLERK_SECRET_KEY=
 
 EDGE_STORE_ACCESS_KEY=
 EDGE_STORE_SECRET_KEY=
-
+```
 5. Run Convex:
 npx convex dev
 
