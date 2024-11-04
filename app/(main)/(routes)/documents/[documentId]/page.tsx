@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
-import { use } from "react";
 
 import { Cover } from "@/components/cover";
 import { Toolbar } from "@/components/toolbar";
@@ -13,44 +12,31 @@ import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
 
 interface DocumentIdPageProps {
-  params: Promise<{
+  params: {
     documentId: Id<"documents">;
-  }>;
+  };
 }
 
 const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
-  // Unwrap params using React.use()
-  const { documentId } = use(params);
-
-  // Dynamically import the Editor component without SSR
   const Editor = useMemo(
     () => dynamic(() => import("@/components/editor"), { ssr: false }),
-    []
+    [],
   );
 
-  // Fetch the document based on the documentId
   const document = useQuery(api.documents.getById, {
-    documentId: documentId,
+    documentId: params.documentId,
   });
 
-  // Define mutation to update the document content
   const update = useMutation(api.documents.update);
 
-  // Handle content change and update the document
   const onChange = (content: string) => {
-    try {
-      update({
-        id: documentId,
-        content,
-      });
-    } catch (error) {
-      console.error("Failed to update document:", error);
-      // Optional: display an error message to the user here
-    }
+    update({
+      id: params.documentId,
+      content,
+    });
   };
 
   if (document === undefined) {
-    // Loading state with skeleton components
     return (
       <div>
         <Cover.Skeleton />
@@ -67,14 +53,12 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   }
 
   if (document === null) {
-    // Document not found state
     return <div>Not found</div>;
   }
 
   return (
     <div className="pb-40">
-      {/* Use optional chaining in case coverImage is undefined */}
-      <Cover url={document.coverImage ?? ""} />
+      <Cover url={document.coverImage} />
       <div className="mx-auto md:max-w-3xl lg:max-w-4xl">
         <Toolbar initialData={document} />
         <Editor onChange={onChange} initialContent={document.content} />
@@ -82,5 +66,4 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
     </div>
   );
 };
-
 export default DocumentIdPage;
