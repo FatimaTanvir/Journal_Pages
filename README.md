@@ -24,7 +24,7 @@ gh repo clone FatimaTanvir/Journal_Pages
 npm install
 ```
 4. Set up the environment variables:
-# Deployment used by `npx convex dev
+# Deployment used by npx convex dev
 ```bash
 CONVEX_DEPLOYMENT=
 NEXT_PUBLIC_CONVEX_URL=
