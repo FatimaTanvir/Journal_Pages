@@ -109,9 +109,9 @@ export function Navigation () {
     .then((documentId) => router.push(`/documents/${documentId}`))
 
     toast.promise(promise,{
-      loading:"Creating new note...",
-      success:"New note created!",
-      error:"Failed to create note."
+      loading:"Creating new entry...",
+      success:"New entry created!",
+      error:"Failed to create entry."
     })
   }
 

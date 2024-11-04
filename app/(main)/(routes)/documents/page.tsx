@@ -20,7 +20,7 @@ const DocumentsPage = () => {
             });
         toast.promise(promise, {
             loading: "Creating a new Journal Entry...",
-            success: "New Journal Entry created >:)",
+            success: "New Journal Entry created!",
             error: "Failed to create a new Journal Entry >:("
         });
     };

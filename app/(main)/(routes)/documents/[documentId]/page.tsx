@@ -19,9 +19,7 @@ interface DocumentIdPageProps {
 
 const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   const Editor = useMemo(
-    () => dynamic(() => import("@/components/editor"), { ssr: false }),
-    [],
-  );
+    () => dynamic(() => import("@/components/editor"), { ssr: false }), [])
 
   const document = useQuery(api.documents.getById, {
     documentId: params.documentId,
@@ -37,6 +35,7 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   };
 
   if (document === undefined) {
+    // Loading state
     return (
       <div>
         <Cover.Skeleton />
@@ -51,11 +50,10 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
       </div>
     );
   }
-
   if (document === null) {
+    // Document not found
     return <div>Not found</div>;
   }
-
   return (
     <div className="pb-40">
       <Cover url={document.coverImage} />
