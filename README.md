@@ -8,7 +8,7 @@ A productivity-focused web app designed to help users manage daily tasks, journa
 
 ## Sneak Peak
 
-https://github.com/user-attachments/assets/597b596d-13d0-4b12-b4de-c377c44bfc06
+![rickroll](https://github.com/user-attachments/assets/014c5480-f393-434f-a546-e931cbbe3ee3)
 
 ## Try it out
 
@@ -22,7 +22,7 @@ Next, run the following command in your terminal or command prompt, or anything 
 ```bash
 npm run dev
 ```
-Open [http://localhost:3### to see a demo in your browser.
+Open [http://localhost:3###] to see a demo in your browser.
 
 ## Note 
-I will be back to work on this.
+This project is incomplete, and I will be back to work on it.
