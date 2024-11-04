@@ -22,7 +22,7 @@ Next, ```cd ..``` into cloned repository and run the following command in your t
 ```bash
 npm run dev
 ```
-Open [http://localhost:3###] to see a demo in your browser.
+Lastly, open http://localhost:300**#** to see a demo in your browser.
 
 ## Note 
 This project is incomplete, and I will be back to work on it.
