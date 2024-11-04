@@ -17,7 +17,7 @@ First, Clone repository:
 ```bash 
 git clone https://github.com/yourusername/journal-pages.git
 ```
-Next, ```bash cd ..``` into cloned repository and run the following command in your terminal or command prompt, or anything you use:
+Next, ```cd ..``` into cloned repository and run the following command in your terminal or command prompt, or anything you use:
 
 ```bash
 npm run dev
